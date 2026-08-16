@@ -1,0 +1,765 @@
+\documentclass{article}
+\usepackage[a4paper,margin=10mm,onecolumn,bottom=2cm,footskip=1cm]{geometry}
+\usepackage{lmodern}
+\usepackage{minted}
+\usepackage[T1]{fontenc}
+\usepackage{tfrupee}
+\setlength{\headheight}{1cm}%set height of header box
+\usepackage{graphicx}% Required for inserting images
+\setlength{\headsep}{4mm}
+\usepackage{setspace}
+\setstretch{1.0}%Space Between lines
+\usepackage{csquotes}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{romannum}
+\usepackage{listings}
+\input{listings-python.prf}  % defines the python-idle-code style
+\usepackage{textcomp} % Needed for straight quotes 
+\usepackage{minted}
+\usemintedstyle[c]{colorful}
+
+\lstdefinestyle{pycode}{
+ basicstyle=\normalsize\ttfamily, % size of the fonts for the code               
+ language={Python},style={python-idle-code},
+ showstringspaces=false,
+ tabsize=4,
+ upquote=true,   % Requires textcomp
+ linewidth=7in  % This just fits 80 characters at 10pt 
+}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{terminalbgcolor}{HTML}{330033}
+\definecolor{terminalrulecolor}{HTML}{000099}
+\lstdefinestyle{terminal}{
+	backgroundcolor=\color{terminalbgcolor},
+	basicstyle=\color{white}\fontfamily{fvm}\footnotesize\selectfont,
+	breakatwhitespace=false,  
+	breaklines=true,
+	captionpos=b,
+	commentstyle=\color{mygreen},
+	deletekeywords={...},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
+	%language=none,
+	morekeywords={*,...},
+	numbers=none,
+	numbersep=5pt,
+    %framerule=2pt,
+	numberstyle=\color{mygray}\tiny\selectfont,
+	rulecolor=\color{terminalrulecolor},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=2,
+	stringstyle=\color{mymauve},
+	tabsize=2
+}
+
+\definecolor{myred}{rgb}{0.92,0.25,0.20}
+
+%\title{\HUGE GATE 2025 \\ \vspace{0.5cm} AGRICULTURAL ENGINEERING (AG)}
+%\author{Chamarthi Krishna Madhur}
+%\date{\today}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vfill
+        \vspace*{5cm}
+        \Huge\textbf{GATE 2025 \\ \vspace{0.5cm} AGRICULTURAL ENGINEERING (AG)}\\
+        \vspace{2cm}
+        \huge \textbf{{Answers to selected questions}}\\
+        \vspace{4cm}
+        \huge Chamarthi Krishna Madhur\\
+        \vspace{1cm}
+        
+        \today
+        
+    \end{center}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\newpage
+\fancyhf{} % clear existing header/footer entries
+\fancyhead[R]{{\textbf{Agricultural Engineering (AG)}}}
+%\renewcommand{\headrule}{\color{magenta}\hrule height 1.5pt}
+\fancyfoot[C]{Page \textbf{\thepage} out of \textbf{\pageref{LastPage}} }
+\fancyfoot[L]{Organizing Institute: IIT Roorkee}
+\renewcommand{\footrulewidth}{0.4pt}
+%\renewcommand{\footrule}{\color{magenta}\hrule height 1.5pt}
+
+
+
+
+
+%\section*{\underline {General Aptitude}}
+ \subsection*{Q.6 – Q.10 Carry TWO marks Each}
+ 
+ \hfill\begin{minipage}{\linewidth}
+ \begin{enumerate}
+    \item[Q.8] A fair six-faced dice, with the faces labelled ‘1’, ‘2’, ‘3’, ‘4’, ‘5’, and ‘6’, is rolled
+    thrice. What is the probability of rolling ‘6’ exactly once?
+    \item[(A)] $\dfrac{75}{216}$ 
+    \item[(B)] $\dfrac{1}{6}$
+    \item[(C)] $\dfrac{1}{18}$
+    \item[(D)] $\dfrac{25}{216}$
+    %\item[SOL] NEED TO WRITE SOLUTION!!!!
+\end{enumerate}
+\end{minipage}\bigskip\\
+\underline{Solution}\\\\
+     Step 1: Finding the probability mass function(PMF) of a single dice roll:\\\\
+     The sample space is S $\in \{1,2,3,4,5,6\}$ \\
+     Let us define a variable $Y_1$ as follows: 
+     \begin{align*}
+         Y_1=
+            \begin{cases}
+                1&X_1=6\\
+                0&X_1\neq6
+            \end{cases}
+     \end{align*}
+     Now, The PMF is defined as:\bigskip\\
+        \begin{align*}
+            P_{Y_1}(k)=
+                \begin{cases}
+                    \frac{1}{6} &  k=1 \\
+                    \frac{5}{6} & k=0\\
+                \end{cases}\\\\
+            \text{Let p,q be $\frac{1}{6}$ and $\frac{5}{6}$ respectively.}
+        \end{align*}\\
+        
+    \noindent Step 2: Applying Z-Transform to find the required PMF for Y \\\\
+    Let us define Y\textsubscript{2} and X\textsubscript{3} as the random variables for the 2\textsuperscript{nd} and 3\textsuperscript{rd} dice roll, respectively. Let Y denote the random variable for the combined triple dice roll.\medskip\\
+    Now, we can write Y=Y\textsubscript{1}+Y\textsubscript{2}+Y\textsubscript{3}.\medskip\\
+    Writing the Z-Transform for Y\textsubscript{1}\\
+        \begin{align*}
+        M_{Y_1}(Z)=E[Z^{-Y_1}]&=\sum\, P_{Y_1}(k)\,Z^{-k}\tag{1}\\
+                           &=(P_{Y_1}(1)Z^{-1} +P_{Y_1}(0)Z^{-0})\\
+                           &=pZ^{-1}+q\tag{2}
+        \end{align*}
+    We know that $Y_1,Y_2,Y_3$ are independent events. So, we can write $M_Y(Z)=M_{Y_1}(Z)\,\, M_{Y_2}(Z)\,\,M_{Y_3}(Z)$.\\
+    Therefore, 
+    \begin{align*}
+        M_Y(Z)&=(pZ^{-1}+q)^3\tag{From 2}.\\
+              &=\sum_{k=0}^3{^3}C_k\,\,q^{3-k}\,\, (pZ^{-1})^k\\    
+              &=\sum P_Y(k)Z^{-k}\tag{From 1}\\
+        \text{So, we can say:}\\
+            P_Y(k)&=^3C_k\,\,q^{3-k}\,\,p^k\tag{3}
+    \end{align*}
+    The above situation is called as a binomial distribution.\\
+    \noindent Step 3: Using binomial distribution to get required probability
+    We need the situation where p appears exactly once. So, we consider only the term where the power of p is 1.\\
+    The required term is :  $^3C_1\,\,p\,\,q^2$.\\
+    Substituting the values of p and q, we get:\\
+    \begin{center}
+        $^3C_1\,\frac{1}{6}\,\,\left(\frac{5}{6}\right)^2$\medskip\\
+        $=\dfrac{75}{216}$
+    \end{center}
+    Therefore, the required answer is $\dfrac{75}{216}$\medskip\\
+\large\underline{\textbf{C Implementation}}\medskip\\
+\begin{minted}{c}
+#include <stdio.h>
+#include<stdlib.h>
+#include <time.h>
+void roll(int*b);
+int main(void){
+  int hit=0;
+  int fail=0;
+  srand(time(NULL));
+  int a[]={0,0,0};
+  for (int i=0;i<1000000000;i++){
+  roll(a);
+  if ((a[0]==6 && a[1]!=6 && a[2]!=6)||(a[0]!=6 && a[1]!=6 && a[2]==6)||(a[0]!=6 && a[1]==6 && a[2]!=6)){
+  //printf("hit");
+  hit+=1;
+  //printf("%d %d %d",a[0],a[1],a[2]);
+  }
+  else{
+  fail+=1;
+  }
+  }
+  printf("hits %d, Fail %d\n",hit,fail);
+  printf("\nratio=%lf\n",(double)(hit)/(hit+fail)); 
+  
+  return 0;
+}
+void roll(int*b){
+b[0]=rand()%6+1;
+b[1]=rand()%6+1;
+b[2]=rand()%6+1;
+}       
+\end{minted}
+\vspace{1cm}
+The terminal output is shown below:\medskip\\
+\begin{lstlisting}[style=terminal]
+madhur@madhur-Dell-15-DC15250:~$ gcc test.c
+madhur@madhur-Dell-15-DC15250:~$ ./a.out
+hits 347221618, Fail 652778382
+
+ratio=0.347222
+\end{lstlisting}
+The answer$\left(\dfrac{75}{216}\right)$ is 0.34722222.. so, we can say that our answer is correct.\\
+ \subsection*{Q.11 – Q.35 Carry ONE mark Each}
+ 
+    \hfill\begin{minipage}{\linewidth}
+\begin{enumerate}
+    \item[Q.11] If a, b, and c are the roots of $2x^3 - 3x^2 + px - 1=0$ and sum of the two roots is 1, the value of $p$ is: 
+    \item[(A)] 2
+    \item[(B)] 1
+    \item[(C)] 3
+    \item[(D)] $\frac{1}{3}$
+    %\item[SOL]NEED TO WRITE SOL!!!\\
+\end{enumerate}
+    \underline{Solution}\medskip\\
+    Let the roots whose sum is 1 be a and b.\\
+    Then, by using the properties of coefficients of an equation, we write:\medskip\\
+    \begin{align*}
+        -\left(\frac{-3}{2}\right)&=a+b+c\\
+                               \frac{3}{2} &=1+c\\
+                               c&=\frac{1}{2} \tag{1}
+    \end{align*}
+    And
+    \begin{align*}
+        abc&=-\left(\frac{-1}{2}\right)\\
+        ab\,\frac{1}{2}&=\frac{1}{2}\tag{From (1)}\\ 
+        ab&=1\tag{2}
+    \end{align*}
+    Also,
+    \begin{align*}
+        ab+bc+ac&=\left(\frac{p}{2}\right)\\
+        1+c(a+b)&=\frac{p}{2}\tag{From (2)}\\
+        1+\frac{1}{2}(1)&=\frac{p}{2}\tag{From (1)}\\
+        3=p
+    \end{align*}
+    Therefore, the value of p is 3.
+    
+    
+    \end{minipage}\bigskip
+
+\hfill\begin{minipage}{\linewidth}
+    \begin{enumerate}
+    \item[Q.12] If the matrix $\begin{bmatrix} $x$&$-3$\\ $2$&$x-5$ \end{bmatrix}$ is singular, sum of the values of $x$ is:
+    \item[(A)] 5
+    \item [(B)]6
+    \item [(C)] 0
+    \item [(D)]$-1$
+    %\item[SOL]NEED TO WRITE SOL!!!
+\end{enumerate}
+\end{minipage}\bigskip\\
+\underline{Solution}\medskip\\
+A matrix is said to be singular if its row echelon form has a row full of zeroes.\medskip\\
+Step 1: Finding row echelon form of the given matrix:\medskip\\
+
+\begin{center}
+      $\begin{bmatrix}
+        x&-3\\
+        2&x-5 
+        \end{bmatrix}$\bigskip\medskip\\
+        $\begin{bmatrix}
+        x&-3\\
+        1&\frac{(x-5)}{2} 
+        \end{bmatrix}$\bigskip\medskip\\
+        $\begin{bmatrix}
+        x-[(x)1]&-3-[(x)\frac{(x-5)}{2}]\\
+        1&\frac{(x-5)}{2} 
+        \end{bmatrix}$\bigskip\medskip\\
+        $\begin{bmatrix}
+        0&\frac{(-6-x^2+5x)}{2}\\
+        1&\frac{(x-5)}{2} 
+        \end{bmatrix}$\bigskip\medskip\\
+        $\begin{bmatrix}
+        1&\frac{(x-5)}{2}\\
+        0&\frac{(-6-x^2+5x)}{2}
+        \end{bmatrix}$\\  
+\end{center}
+\noindent Step 2: Making the bottom row to be full of zeroes:\medskip\\
+We need to equate $\dfrac{(-6-x^2+5x)}{2}$ to zero.\\
+We get 
+\begin{align*}
+    -6-x^2+5x=0\\
+    x^2-5x+6=0
+\end{align*}
+So, the sum of values of x is 5.\medskip\\
+Since it is not possible to display 'x' and 'x-5' explicitly in the code, a numerical approach was taken:\\\\
+The following code converts a numerical matrix into its row echelon form.\\\\
+We can verify that the values of ($x=2,3$) give us a matrix with a row of zeroes\\\\
+\large \underline{\textbf{C Implementation}}\\
+\begin{minted}[frame=single, framesep=10pt]{c}
+#include <stdio.h>
+#include <math.h>
+#define ROWS 2
+#define COLS 2
+
+void printmtrx(double mtrx[ROWS][COLS]);
+void convertToEchelon(double mtrx[ROWS][COLS]);
+
+int main() {
+    
+    double mtrxa[ROWS][COLS] = {//for x=2
+        { 2, 2},
+        {-3,-3}
+        
+    };
+    double mtrxb[ROWS][COLS]={//for x=3
+      {3,-3},
+      {2,-2}
+      
+    };
+    printf("Original matrix A :\n");
+    printmtrx(mtrxa);
+    printf("Original matrix B :\n");
+    printmtrx(mtrxb);
+    convertToEchelon(mtrxa);
+    convertToEchelon(mtrxb);
+    
+
+    printf("Echelon Form a:\n");
+    printmtrx(mtrxa);
+    printf("\n Echelon Form b : \n");
+    printmtrx(mtrxb);
+    return 0;
+}
+void printmtrx(double mtrx[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            printf("%0.2f ", mtrx[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+void convertToEchelon(double  mtrx[ROWS][COLS]) {
+    int lead = 0; // Tracks the current pivot column
+    for (int r = 0; r < ROWS; r++) {
+        if (lead >= COLS) {
+            return;
+        }
+        // Finding non zero element in column 
+        int i = r;
+        while (mtrx[i][lead] == 0) {
+            i++;
+            if (i == ROWS) {
+                i = r;
+                lead++;
+                if (lead == COLS) {
+                    return;
+                }
+            }
+        }
+        // Swap current row 'r' with pivot row 'i'
+        if (i != r) {
+            for (int j = 0; j < COLS; j++) {
+                double temp = mtrx[r][j];
+                mtrx[r][j] = mtrx[i][j];
+                mtrx[i][j] = temp;
+            }
+        }
+        // 2. Eliminate entries below the current pivot
+        for (int k = r + 1; k < ROWS; k++) {
+            if (fabs(mtrx[k][lead]) > 1e-9) {
+                double factor = mtrx[k][lead] / mtrx[r][lead];
+                for (int j = lead; j < COLS; j++) {
+                    mtrx[k][j] -= factor * mtrx[r][j];
+                }
+            }
+        }
+        
+        lead++;
+    }
+}
+\end{minted}
+The terminal output is :\\
+\begin{lstlisting}[style=terminal]
+madhur@madhur-Dell-15-DC15250:~/LATEX_CODES$ gcc echelon.c -lm
+madhur@madhur-Dell-15-DC15250:~/LATEX_CODES$ ./a.out
+Original matrix A :
+2.00 2.00 
+-3.00 -3.00 
+
+Original matrix B :
+3.00 -3.00 
+2.00 -2.00 
+
+Echelon Form a:
+2.00 2.00 
+0.00 0.00 
+
+
+ Echelon Form b : 
+3.00 -3.00 
+0.00 0.00 
+\end{lstlisting}
+Since both gave a row echelon form with a row of zeroes, we can conclude that $x=2,3$ are the 2 values satisfying the singular condition. So, their sum is 5.\medskip\\
+
+
+\hfill\begin{minipage}{\linewidth}
+    \begin{enumerate}
+    \item[Q.13] $\dfrac{s}{s^2+a^2}$ is the Laplace transform of: 
+    \item[(A)] cos$(at)$
+    \item[(B)] sin$(at)$
+    \item[(C)] sinh$(at)$
+    \item[(D)] cosh$(at)$
+    %\item[SOL]NEED TO WRITE SOL!!!            
+    \end{enumerate}
+    \end{minipage}\bigskip\\
+\underline{Solution}\medskip\\
+We do not know the laplace transforms of the options, so we hit-and-trial them to get the expression:\medskip\\
+Option (A):\\
+\begin{align*}
+    \mathcal{L}\{\cos(at)\}&=\int_{0}^{\infty}\cos(at)\,e^{-st}\,dt=I\\
+                          I&=\int_{0}^{\infty}\frac{d(\sin(at))}{a}\,e^{-st}\\
+                           &=\frac{\sin(at)}{a}\,e^{-st}\Bigg|_0^\infty-\frac{1}{a}\int_{0}^{\infty}\sin(at)e^{-st}(-s)dt\\
+                           &=0+\frac{s}{a}\int_0^\infty \frac{d(-\cos(at))}{a}\,e^{-st}\\
+                           &=-(\frac{s}{a^2})\left\{\cos(at)\,e^{-st}\,\,\Bigg|_0^\infty-\int_0^\infty\cos(at)\,e^{-st}\,(-s)\right\}\\
+                           &=-(\frac{s}{a^2})\left\{(0-1)-(-s)I\right\}\\
+                           &=-(\frac{s}{a^2})\left\{-1+sI\right\}\\
+                          I&=\frac{s}{a^2}-\frac{s^2}{a^2}(I)\\
+       \left(\frac{a^2+s^2}{a^2}\right)I&=\frac{s}{a^2}\\
+                          I&=\frac{s}{s^2+a^2}
+\end{align*}\bigskip\\
+\begin{center}
+    (continued in the next page)
+\end{center}
+Option (B):
+\begin{align*}
+    \mathcal{L}\{\sin(at)\}&=\int_{0}^{\infty}\sin(at)\,e^{-st}\,dt=I\\
+                          I&=\int_{0}^{\infty}\frac{d(-\cos(at))}{a}\,e^{-st}\\
+                           &=\frac{-\cos(at)}{a}\,e^{-st}\Bigg|_0^\infty-\frac{1}{a}\int_{0}^{\infty}-\cos(at)e^{-st}(-s)dt\\
+                           &=\frac{1}{a}-\frac{s}{a}\int_0^\infty \frac{d(\sin(at))}{a}\,e^{-st}\\
+                           &=\frac{1}{a}-(\frac{s}{a^2})\left\{\sin(at)\,e^{-st}\,\,\Bigg|_0^\infty-\int_0^\infty\sin(at)\,e^{-st}\,(-s)\right\}\\
+                           &=-(\frac{s}{a^2})\left\{(0-0)-(-s)I\right\}\\
+                           &=-(\frac{s}{a^2})\left\{0+sI\right\}\\
+                          I&=\frac{a}{a^2}-\frac{s^2}{a^2}(I)\\
+       \left(\frac{a^2+s^2}{a^2}\right)I&=\frac{a}{a^2}\\
+                          I&=\frac{a}{s^2+a^2}
+\end{align*}\bigskip\\\\
+Option (C):\\
+\begin{align*}
+    \mathcal{L}\{\sinh(at)\}&=\int_0^\infty \frac{e^{at}-e^{-at}}{2}\,e^{-st} dt\\
+                            &=\frac{1}{2}\int_0^\infty e^{(a-s)(t)} dt -\frac{1}{2}\int_0^\infty e^{(-a-s)(t)}dt\\
+                            &=\frac{1}{2}\left\{\frac{e^{(a-s)(t)}}{a-s}\right\}\Bigg|_0^\infty-\frac{1}{2}\left\{\frac{e^{(-a-s)(t)}}{-a-s}\right\}\Bigg|_0^\infty\tag{assume s$>$a for integral to be finite}\\
+                            &=\frac{1}{2}\left(\frac{1}{s-a}-\frac{1}{s+a}\right)\\
+                            &=\frac{1}{2}\left(\frac{2a}{s^2-a^2}\right)\\
+                           I&=\frac{a}{s^2-a^2}
+\end{align*}
+Option (D):\\
+\begin{align*}
+    \mathcal{L}\{\cosh(at)\}&=\int_0^\infty \frac{e^{at}+e^{-at}}{2}\,e^{-st} dt\\
+                            &=\frac{1}{2}\int_0^\infty e^{(a-s)(t)} dt +\frac{1}{2}\int_0^\infty e^{(-a-s)(t)}dt\\
+                            &=\frac{1}{2}\left\{\frac{e^{(a-s)(t)}}{a-s}\right\}\Bigg|_0^\infty+\frac{1}{2}\left\{\frac{e^{(-a-s)(t)}}{-a-s}\right\}\Bigg|_0^\infty\tag{assume s$>$a for integral to be finite}\\
+                            &=\frac{1}{2}\left(\frac{1}{s-a}+\frac{1}{s+a}\right)\\
+                            &=\frac{1}{2}\left(\frac{2s}{s^2-a^2}\right)\\
+                           I&=\frac{s}{s^2-a^2}
+\end{align*}
+The option that has the same laplace transform as the one in the question is Option(A). So, it is the correct answer.\bigskip\\
+\hfill\begin{minipage}{\linewidth}
+    \begin{enumerate}
+        \item[Q.15] The median of the following set of numbers: 154, 130, 144, 137, 156, 146, 138,
+149, 160, 138 is:
+    \item[(A)] $145.0$
+    \item[(B)] $145.2$
+    \item[(C)] $151.0$
+    \item[(D)] $146.0$
+    %\item[SOL] NEED TO WRITE SOL!!!
+    \end{enumerate}   
+\end{minipage}\bigskip\\
+\underline{Solution}\medskip\\
+To find the median, we need to arrange the data in ascending or descending order.\\
+After arranging them in ascending order, the data is as follows:\medskip\\
+\{130,137,138,138,144,146,149,154,156,160\}\medskip\\
+The number of elements in the data set are 10.\medskip\\
+Since it is an even number, the median (M) is defined as the average of the middle 2 terms (in this case, average of 5\textsuperscript{th} and 6\textsuperscript{th} terms).\medskip\\
+Therefore, the median(M) is $\dfrac{144+146}{2} = 145.0$.\medskip\\
+\large\underline{\textbf{C Implementation }}\medskip\\
+\begin{minted}[frame=single,framesep=10pt]{c}
+#include <stdio.h>
+
+void swap(int*a,int i,int j);
+int partition(int*a, int low, int high);
+int quicksort(int*a,int low,int high);
+
+
+int main(){
+  int a[]={130,137,138,138,144,146,149,154,156,160};
+  int q=sizeof(a)/sizeof(a[0]);
+  //Printing original array
+  printf("The original array is : [");
+  for(int k=0;k<q;k++){
+    printf("%d ",a[k]);
+  }
+  printf("]\n");
+  //printf("%d\n", q);
+  quicksort(a,0,q-1);
+  printf("The sorted array is: [");
+  for(int k=0;k<q;k++){
+    printf("%d ",a[k]);
+  }
+  printf("]\n");
+  double m;
+  if (q%2==0){
+    m=(a[(q/2)]+a[(q/2-1)])/2;
+    printf("\nThe median is : %lf\n", m);
+  }
+  else {
+  m=(a[(q-1)/2]);
+  printf("\nThe median is : %lf\n", m);
+  }
+}
+
+int partition(int* a,int low, int high){
+  int pivot = a[high];
+  int i=low-1;
+  for (int j=low;j<high;j++){
+    if(a[j]<pivot){
+      i+=1;
+      swap(a,i,j);
+    }
+  }
+  swap(a,i+1,high);
+  return i+1;
+}
+int quicksort(int *a, int low ,int high){
+  if(low<high){
+    int pi=partition(a,low,high);
+  quicksort(a,low,pi-1);
+  quicksort(a,pi+1,high);
+  }
+}
+
+void swap(int*a,int i,int j){
+  int temp=a[i];
+  a[i]=a[j];
+  a[j]=temp;
+}
+    
+\end{minted}
+
+\noindent The output is as follows:\medskip\\
+\begin{lstlisting}[style=terminal]
+madhur@madhur-Dell-15-DC15250:~/LATEX_CODES$ gcc Sorter.c
+madhur@madhur-Dell-15-DC15250:~/LATEX_CODES$ ./a.out
+The original array is : [130 137 138 138 144 146 149 154 156 160 ]
+The sorted array is: [130 137 138 138 144 146 149 154 156 160 ]
+
+The median is : 145.000000
+
+\end{lstlisting}
+\subsection*{Q.36 – Q.65 Carry TWO marks each}
+
+\hfill\begin{minipage}{\linewidth}
+    \begin{enumerate}
+    \item[Q.36] The series \\ $\sum_{n=0}^{r} q^n$ $=1+q+q^2+... ... ...$ has the sum:
+    \item[(A)] $\frac{1}{1-q}$-$\frac{q^{r+1}}{1-q}$
+    \item[(B)] $\frac{1}{q-1}$+$\frac{q^{r+1}}{q-1}$
+    \item[(C)] $\frac{1}{1-q}$+$\frac{q^{r+1}}{1-q}$
+    \item[(D)] $\frac{1}{q-1}$
+    %\item[SOL] NEED TO WRITE SOL!!! 
+    \end{enumerate}
+\end{minipage}
+\underline{Solution}\medskip\\
+    The given sequence is a geometric progression with initial term as 1 and common ratio as q and the number of terms are r+1.\\
+    The sum of a geometrical progression with initial term a, common ratio r and number of terms n is given by:\\
+    \begin{center}
+        \large$a\,\frac{r^n-1}{r-1}$
+    \end{center}
+    applying the above formula, we get :
+    \begin{center}
+        $1\,\frac{q^{r+1}-1}{q-1}$\medskip\\
+        $\frac{1-q^{r+1}}{1-q}$\medskip\\
+        $\frac{1}{1-q}-\frac{q^{r+1}}{1-q}$
+        
+    \end{center}
+Therefore, the answer is option A.\medskip\\
+\large\underline{\textbf{C implementation}}\\
+
+\begin{minted}[frame=single, framesep=10pt]{c}
+#include<stdio.h>
+#include<math.h>
+int main(){
+  double q,sum=0;
+  int r;
+  printf("Enter the value of q:");
+  scanf("%lf",&q);
+  printf("\nEnter the value of r:");
+  scanf("%d",&r);
+  for(int i=0;i<=r;i++){
+    sum+=pow(q,i);
+    
+  }
+  double formula =(1/(1-q))-((pow(q,r+1))/(1-q));
+  printf("Sum is %lf\n", sum);
+  printf("The formula gave %lf\n",formula);
+  if (sum==formula){
+  printf("Both are equal\n");
+  }
+}   
+\end{minted}
+
+\begin{lstlisting}[style=terminal]
+madhur@madhur-Dell-15-DC15250:~/LATEX_CODES$ gcc gp.c -lm
+madhur@madhur-Dell-15-DC15250:~/LATEX_CODES$ ./a.out
+Enter the value of q:2
+
+Enter the value of r:3
+Sum is 15.000000
+The formula gave 15.000000
+Both are equal
+\end{lstlisting}
+    
+\hfill\begin{minipage}{\linewidth}
+    \begin{enumerate}
+    \item[Q.37] The value of $\lim_{x\to 0}\dfrac{x\cos(x)-\sin(x)}{x^2\sin(x)}$
+        \item[(A)] $\frac{-1}{3}$
+        \item[(B)] $\frac{1}{3}$
+        \item[(C)] $3$
+        \item[(D)]$-3$
+        %\item[SOL] NEED TO WRITE SOL!!! 
+    \end{enumerate}
+        \underline{Solution}\medskip\\
+        We use the idea of taylor series expansion to solve the problem.\\
+        
+        \begin{center}
+        $\frac{x(\cos(x))-\sin(x)}{x^2\sin(x)}$\\
+        $\frac{x(1-\frac{x^2}{2!} .....)-(x-\frac{x^3}{3!}.....)}{x^2(x-\frac{x^3}{3!}.....)}$\\
+        When x approaches zero, we can ignore the higher power terms.\\
+        $\frac{(x-\frac{x^3}{2})-(x-\frac{x^3}{6})}{x^3(1-\frac{x^2}{6})}$\\
+        $\frac{\frac{-1}{3}}{1-\frac{x^2}{6}}$\\
+        Substituting x as zero gives us the limit as $\dfrac{-1}{3}$.
+        \end{center}
+        
+\end{minipage}
+\large\underline{\textbf{Python Implementation}}\bigskip\\
+\begin{lstlisting}[style=pycode,frame=single]
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return (x*(np.cos(x))-np.sin(x))/((x**2)*np.sin(x))
+
+x = np.linspace(-0.5, 0.5, 1000)
+y = f(x)
+plt.plot(x, y, color='blue', linestyle='-', linewidth=2, label='f(x) = Given Function')
+plt.axhline(y=-1/3, color='red', linestyle='-', linewidth=2, label='f(x) = -0.33333')
+plt.title('Func limit is -0.33333')
+plt.xlabel('X Axis')
+plt.ylabel('Y Axis')
+plt.grid(True, alpha=0.5)
+plt.legend() 
+plt.show()
+\end{lstlisting}\vspace{1cm}
+
+  \large The output graph is shown below:\\
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Images/limitplot.png}
+\end{figure} \newpage 
+
+
+\hfill\begin{minipage}{\linewidth}
+\begin{enumerate}
+    \item[Q.38] If $u=x^4+y^4+3x^2y^2$, the value of $\left(x\dfrac{\partial{u}}{\partial{x}}+y\dfrac{\partial{u}}{\partial{y}}\right)^{-1}$
+    \item[(A)] $4u$
+    \item[(B)] $0$
+    \item[(C)] $\dfrac{1}{4u}$
+    \item[(D)] $2u$
+    %\item[SOL] NEED TO WRITE SOL!!! 
+\end{enumerate}
+\end{minipage}\bigskip
+
+
+\underline{Solution}\\
+We can directly evaluate the partial derivative using the chain and product rules, but another approach is to use euler's theorem for homogeneous functions.\\
+We will solve it using the second method, since the first one is straightforward.\bigskip\\
+Step 1: Proving the given function is homogeneous:\medskip\\
+A function $f(x,y)$ is said to be homogeneous and having degree n if $f(\alpha x, \alpha y)=\alpha^n f(x,y)$\medskip\\
+now, let 
+\begin{align*}
+    u=g(x,y)&=x^4+y^4+3x^2y^2\\
+g(\alpha x,\alpha y)&=\alpha^4(x^4+y^4+3x^2y^2)\\    
+\end{align*}
+Therefore, u is a homogeneous function of degree 4.\medskip\\
+Step 2: Using Euler's theorem to get the answer\medskip\\
+\textbf{Euler's Theorem for homogeneous functions}\\
+\quad It states that if a function $f(x,y)$ is homogeneous, then the following condition is satisfied:\begin{align*}
+    x\frac{\partial u}{\partial x}+y\frac{\partial u}{\partial y}&=nf\\  
+\end{align*}
+Since we know that the given equation is homogeneous and of degree 4, we can apply this theorem.\\
+\begin{align*}\
+    x\frac{\partial u}{\partial x}+y\frac{\partial u}{\partial y}&=4u\\
+\end{align*}
+Since they asked for its reciprocal, the answer is $\dfrac{1}{4u}$\\
+
+\hfill\begin{minipage}{\linewidth}
+\begin{enumerate}
+    \item[Q.43] The value of $y$ at $x=0.3$ and $y(x=0)=0$ for the differential equation $\frac{dy}{dx}=3y+2e^x$ is \underline{\hspace{1cm}}. (Rounded off to 3 decimal places)  
+    %\item[SOL] NEED TO WRITE SOL!!! 
+\end{enumerate}    
+\end{minipage}\bigskip\\
+\underline{Solution}\\\\
+Step 1: Defining a function G(s) using laplace transform:\\ 
+\begin{align*}
+    G(s)&=\mathcal{L}\{y\}\\
+    sG(s)&=\mathcal{L}\{y'\} \tag{By property of laplace transform and Given y(0)=0}
+\end{align*}
+ Step 2: Applying the laplace transform on the diiferential equation:\\
+ \begin{align*}
+     \mathcal{L}\{y'\}&=\mathcal{L}\{3y+2e^x\}\\
+     \mathcal{L}\{y'\}&=3\mathcal{L}\{y\}\,+2\mathcal{L}\{e^x\}\tag{Using linearity of laplace transform}\\
+     sG(s)&=3G(s)+2\mathcal{L}\{e^x\}
+ \end{align*}
+Step 3:Finding laplace transform of $e^x$:\\
+\begin{align*}
+    \mathcal{L}\{e^x\}&=\int_{0}^{\infty}e^t\,e^{-st} dt\\
+                      &=\int_{0}^{\infty}e^{(1-s)(t)} dt\\
+                      &=\frac{1}{1-s}\,\,(e^{(1-s)(t)}\big|_{0}^{\infty})\\
+                      &=\frac{1}{1-s}(0-1)\tag{Assuming that s$>$1}\\
+                      &=\frac{1}{s-1}
+\end{align*}
+Step 4:Finding G(s):\\
+\begin{align*}
+    G(s)(s-3)&=\frac{2}{s-1}\\
+    G(s)&=\frac{2}{(s-1)(s-3)}\\
+    \text{Using partial fractions:}\\
+    G(s)&=\left(\frac{1}{s-3}-\frac{1}{s-1}\right)
+\end{align*}
+Step 5: Using inverse laplace transform to find y:
+\begin{align*}
+   \mathcal{L}\{y\}&=G(s)\\
+                  y &=\mathcal{L^{-1}}\left\{\frac{1}{s-3}-\frac{1}{s-1}\right\}\\
+                  y &=\mathcal{L^{-1}}\left\{\frac{1}{s-3}\right\}-\mathcal{L^{-1}}\left\{\frac{1}{s-1}\right\}\tag{Using linearity of inverse laplace transform}\\
+                  y&=e^{3x}-e^{x}\tag{From above, we say that$\mathcal{L}\{e^{ax}\}=\frac{1}{s-a}$ provided s$>$a.}\\
+\end{align*}
+Step 6: Substituting condition to find value of y:\\
+\begin{align*}
+    x&=0.3\tag{given}\\
+    y&=e^{3\times0.3}-e^{0.3}\\
+    y&=1.110
+\end{align*}
+\large\underline{\textbf{Python Implementation}}\\
+\begin{lstlisting}[style=pycode,frame=single]
+# The expression is y=e^{3x}-e^{x}
+#evaluating the expression:
+import math
+x=0.3
+y=math.exp(3*x)-math.exp(x)
+print(y)
+\end{lstlisting}
+Output :\\
+\begin{lstlisting}[style=terminal]
+1.1097443035809462
+\end{lstlisting}
+
+
+
+\end{document}
